@@ -1,0 +1,30 @@
+section{
+    text-align: center;
+}
+
+article{
+    background-color: rgb(231, 214, 187);
+    padding: 2%;
+    font-size: 16px;
+    margin: 10px auto;
+    width: 90%;
+}
+
+.hidden{
+    opacity: 0;
+}
+
+.btn{
+    padding: 5px;
+    margin: 10px auto;
+    display: block;
+}
+
+.fadein{
+    opacity: 1;
+    transition: 0.7s;
+    -webkit-transition: 0.7s;
+    -moz-transition: 0.7s;
+    -ms-transition: 0.7s;
+    -o-transition: 0.7s;
+}
