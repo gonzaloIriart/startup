@@ -1,19 +1,18 @@
 class EventEmitter{
     constructor(){
-        events = {}
+    this.events = {}
     }
 
     on(eventName,callback){
-        if(this.events[eventName]){
-            this.events[eventName].push(callback);
-        }else{
-            this.events[eventName] = [callback];
-        }
+        this.events[eventName] = this.events[eventName] || [];
+        this.events[eventName].push(callback);
+        return this;
     }
 
     emit(eventName){
         let e =this.events[eventName];
-        if(!e) return false;        
+        if(!e) return false; 
+
         e.forEach(cb=> {
             cb()
         });
