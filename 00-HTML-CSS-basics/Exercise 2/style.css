@@ -17,12 +17,20 @@ header,footer {
 
 .header {
     font-size: 46px;
+   
+}
+
+
+[class*="a"]{
+    background-color: blue;
+}
+
+[class$="r"]{
     background-color: magenta;
 }
 
 .footer {
     font-size: 10px;
-    background-color: magenta;
     float: left;
     clear: both;
     width: 100%
@@ -42,14 +50,12 @@ header,footer {
 
 .navigation {
     font-size: 12px;
-    background-color: blue;
     width: 20%;
     float: left;
 }
 
 .sidebar {
     font-size: 10px;
-    background-color: magenta;
     width: 20%;
     float: left;
 }
