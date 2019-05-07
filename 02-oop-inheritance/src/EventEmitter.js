@@ -13,8 +13,8 @@ class EventEmitter{
         let e =this.events[eventName];
         if(!e) return false; 
 
-        e.forEach(cb=> {
-            cb()
+        e.forEach((cb)=> {
+            cb();
         });
            
         return true;
