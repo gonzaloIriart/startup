@@ -6,13 +6,14 @@ import MovieList from './components/MovieList/MovieList';
 
 class App extends React.Component {
   constructor(props){
-    super(props);
-    
+    super(props);    
     this.state = {
-    movies : [{"title":"Titanic","duration":150,"year":1995}]
+    movies : []
   };
-  this.handleAddNewMovie = this.handleAddNewMovie.bind(this);
 
+  this.handleAddNewMovie = this.handleAddNewMovie.bind(this);
+  this.handleEditMovie = this.handleEditMovie.bind(this);
+  this.handleDeleteMovie = this.handleDeleteMovie.bind(this);
 }
  
  handleAddNewMovie(title,year,duration){  
@@ -22,11 +23,33 @@ class App extends React.Component {
     duration
   }
 
-  //console.log(this.state.movies);
-  this.setState((state)=>({
-    movies : [...state.movies, movie]
-    })
-  );
+  const newMovieArray = this.state.movies.slice();
+  newMovieArray.push(movie);
+  this.setState({movies : newMovieArray})
+};
+
+
+handleEditMovie(title,year,duration,index){     
+      const editedMovie = {
+      title,
+      year,
+      duration
+    }
+
+    const newMovieArray = this.state.movies.slice()
+    newMovieArray.splice(index,1,editedMovie);
+    this.setState({movies : newMovieArray})
+};
+
+handleDeleteMovie(index){
+
+  const newMovieArray = this.state.movies.slice()
+
+  if(index !== -1){
+    newMovieArray.splice(index,1) 
+  }
+  
+  this.setState({movies : newMovieArray})
 };
   
 render(){
@@ -36,7 +59,7 @@ render(){
         Movie List App
       </header>
       <NewMovieForm addNewMovie = {this.handleAddNewMovie}/>
-      <MovieList movies = {this.state.movies}/>  
+      <MovieList movies = {this.state.movies} editMovie = {this.handleEditMovie} deleteMovie = {this.handleDeleteMovie}/>  
     </div>
     );
   }

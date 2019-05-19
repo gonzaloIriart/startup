@@ -7,7 +7,7 @@ export default class MovieList extends Component {
     return (
       <div>
         {this.props.movies.map((item,index) =>(
-          <Movie key = {index} info = {item}/>
+          <Movie key = {item.title} id = {index} info = {item} editMovie = {this.props.editMovie} deleteMovie = {this.props.deleteMovie}/>
         ))}
       </div>
     )
