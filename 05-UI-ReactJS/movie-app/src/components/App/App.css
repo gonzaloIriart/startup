@@ -31,3 +31,13 @@
     transform: rotate(360deg);
   }
 }
+
+nav{
+  margin: 15px;
+}
+
+nav .navlink{
+  text-decoration: none;
+  padding: 15px;
+  background-color: gray;
+}
