@@ -1,15 +1,21 @@
 import React, { Component } from 'react';
 import Movie from '../Movie/Movie';
+import { connect } from 'react-redux';
 
-export default class MovieList extends Component {
-  render() {
+class MovieList extends Component {
     
-    return (
-      <div>
-        {this.props.movies.map((item,index) =>(
-          <Movie key = {item.title} id = {index} info = {item} editMovie = {this.props.editMovie} deleteMovie = {this.props.deleteMovie}/>
-        ))}
-      </div>
-    )
+    render(){
+      const {movies} = this.props.movies;
+    return movies.map((movie,index)=>{
+        return(
+          <Movie info = {movie} key = {movie.title} id = {index}/>
+        )
+      })    
   }
+  
 }
+const mapStateToProps = (state) =>{
+  return { movies: state.movies };
+}
+
+export default connect(mapStateToProps)(MovieList);

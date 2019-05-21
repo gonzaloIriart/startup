@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-export default class NewMovieForm extends Component {
+class EditForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -10,7 +11,7 @@ export default class NewMovieForm extends Component {
         };
     
         this.handleInputChange = this.handleInputChange.bind(this);
-        
+        this.handleEditMovie = this.handleEditMovie.bind(this);
       }
     
       handleInputChange(event) {
@@ -69,3 +70,22 @@ export default class NewMovieForm extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return state;
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    editMovie: (title,duration,year,id) => {
+      dispatch({
+        type: 'EDIT_MOVIE',
+        payload: {'title':title,
+          'duration':duration,
+          'year':year,
+          'id':id}})
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditForm)
